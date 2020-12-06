@@ -19,12 +19,9 @@ class MyComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    document.getElementById("counter").style.color = "red";
-    setTimeout( switchFontColorBack(), 100);
+    document.getElementById("counter").style.color = "#61dafb";
+    setTimeout( this.switchFontColorBack, 100);
   }
-
-
-  
 
   render() {
 
