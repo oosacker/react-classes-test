@@ -7,6 +7,7 @@ class MyComponent extends React.Component {
     this.state = {
       count: 0,
     };
+    this.counterRef = React.createRef();
   }
 
   incrementCount = () => {
@@ -15,12 +16,14 @@ class MyComponent extends React.Component {
   }
 
   switchFontColorBack = () => {
-    document.getElementById("counter").style.color = "white";
+    // document.getElementById("counter").style.color = "white";
+    this.counterRef.current.style.color = "white";
   }
 
   componentDidUpdate() {
-    document.getElementById("counter").style.color = "#61dafb";
-    setTimeout( this.switchFontColorBack, 100);
+    // document.getElementById("counter").style.color = "#61dafb";
+    this.counterRef.current.style.color = "#61dafb";
+    setTimeout( this.switchFontColorBack, 100 );
   }
 
   render() {
@@ -31,7 +34,8 @@ class MyComponent extends React.Component {
 
     return (
         <>
-            <h1 id="counter">{this.state.count}</h1>
+            {/* <h1 id="counter">{this.state.count}</h1> */}
+            <h1 ref={this.counterRef}>{this.state.count}</h1>
             <button type="button" onClick={this.incrementCount}>
               <span className="my-label">
                 Click Me
